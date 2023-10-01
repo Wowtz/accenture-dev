@@ -28,8 +28,7 @@ jobs:
       run: |
         docker buildx create --use
         docker buildx inspect default --bootstrap
-        docker buildx build --file Dockerfile --tag $IMAGE_NAME:$(date +%s) --output type=image,registry=${{ secrets.DOCKER_REGISTRY }} --platform linux/amd64 .
-
+        docker buildx build --file TesteAccenture/Dockerfile --tag $IMAGE_NAME:$(date +%s) --output type=image,registry=${{ secrets.DOCKER_REGISTRY }} --platform linux/amd64 .
     - name: Login to Docker Hub
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
