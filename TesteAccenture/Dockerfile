@@ -8,7 +8,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["/TesteAccenture.csproj", "src/TesteAccenture/"]
 RUN dotnet restore "src/TesteAccenture/TesteAccenture.csproj"
-COPY ["/TesteAccenture.csproj", "src/TesteAccenture/"]
+COPY . .
 WORKDIR /src
 RUN dotnet build "src/TesteAccenture/TesteAccenture.csproj" -c Release -o /app/build
 
