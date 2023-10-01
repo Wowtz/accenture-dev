@@ -12,15 +12,12 @@ COPY . .
 WORKDIR /src
 RUN dotnet build "src/TesteAccenture/TesteAccenture.csproj" -c Release -o /app/build
 
-# Use a imagem oficial do SDK do ASP.NET Core para construir e publicar o aplicativo
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /src
-COPY . .
+# Publicar o aplicativo
+FROM build AS publish
 RUN dotnet publish "TesteAccenture.csproj" -c Release -o /app/publish
 
 # Configurar a imagem final
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS final
+FROM base AS final
 WORKDIR /app
-COPY --from=build /app/publish .
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "TesteAccenture.dll"]
-
