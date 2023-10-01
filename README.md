@@ -52,6 +52,7 @@ O objetivo deste teste é entender suas habilidades de desenvolvimento, estétic
 - Usada a API https://viacep.com.br/ws/, api recomendada pelo dessafio não se encontrava disponível
 - Usado EntityFrameWork para Banco de dados
 - Usado PrimeNG para estilização do Front
+- Os testes foram feitos em xUnit e somente para as principais controllers
 
 ## Como Usar
 
