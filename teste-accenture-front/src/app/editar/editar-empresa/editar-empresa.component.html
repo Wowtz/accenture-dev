@@ -1,0 +1,49 @@
+<div class="card">
+    <div class="form-container">
+        <p>Editar Empresa</p>
+        <form (ngSubmit)="atualizarEmpresa()" [formGroup]="empresaForm">
+            <div class="form-group">
+                <label for="cnpj">CNPJ:</label>
+                <input type="text" maxlength="18" placeholder="CNPJ" id="cnpj" formControlName="CNPJ" pInputText appCpfCnpjFormat/>
+                <div class="error-message"
+                    *ngIf="empresaForm.get('CNPJ')?.hasError('required') && empresaForm.get('CNPJ')?.touched">
+                    {{ errorMessages.CNPJ.required }}
+                </div>
+                <div class="error-message"
+                    *ngIf="empresaForm.get('CNPJ')?.hasError('pattern') && empresaForm.get('CNPJ')?.touched">
+                    {{ errorMessages.CNPJ.pattern }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="nomeFantasia">Nome Fantasia:</label>
+                <input type="text" placeholder="Nome Fantasia" id="nomeFantasia" formControlName="NomeFantasia" pInputText />
+                <div class="error-message"
+                    *ngIf="empresaForm.get('NomeFantasia')?.hasError('required') && empresaForm.get('NomeFantasia')?.touched">
+                    {{ errorMessages.NomeFantasia.required }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cep">CEP:</label>
+                <input
+                    type="text"
+                    maxlength="13"
+                    placeholder="CEP"
+                    id="cep"
+                    formControlName="CEP"
+                    pInputText
+                    appCepFormat
+                    (ngModelChange)="validarCep()" />
+                <p-tag *ngIf="cepExiste?.cepValido" icon="pi pi-check" severity="success" value="CEP Existente"></p-tag>
+                <div class="error-message"
+                    *ngIf="empresaForm.get('CEP')?.hasError('required') && empresaForm.get('CEP')?.touched">
+                    {{ errorMessages.CEP.required }}
+                </div>
+                <div class="error-message"
+                    *ngIf="empresaForm.get('CEP')?.hasError('pattern') && empresaForm.get('CEP')?.touched">
+                    {{ errorMessages.CEP.pattern }}
+                </div>
+            </div>
+            <button type="submit" pButton label="Atualizar"></button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="table-container">
+    <div class="save-button">
+      <p-button (click)="salvar()">
+        Salvar
+      </p-button>
+    </div>
+    <p-table [value]="fornecedores" [scrollable]="true">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nome</th>
+          <th>CPF/CNPJ</th>
+          <th>Ações</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-fornecedor>
+        <tr>
+          <td>{{ fornecedor.Nome }}</td>
+          <td>{{ fornecedor.CPFCNPJ }}</td>
+          <td>
+            <p-toggleButton [onLabel]="'Vinculado'" [offLabel]="'Não Vinculado'" [style]="{ width: '10em' }"
+              [ngClass]="{ 'p-button-success': fornecedorEstaVinculado(fornecedor.Id) }"
+              [ngModel]="fornecedorEstaVinculado(fornecedor.Id)" (click)="vincularOuDesvincular(fornecedor)">
+            </p-toggleButton>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  

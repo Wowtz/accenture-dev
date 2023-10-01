@@ -1,0 +1,28 @@
+<div class="table-container">
+  <div class="save-button">
+    <p-button (onClick)="salvar()">
+      Salvar
+    </p-button>
+  </div>
+  <p-table [value]="empresas" [scrollable]="true" >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nome</th>
+        <th>CNPJ</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-empresa>
+      <tr>
+        <td>{{ empresa.NomeFantasia }}</td>
+        <td>{{ empresa.CNPJ }}</td>
+        <td>
+          <p-toggleButton [onLabel]="'Vinculada'" [offLabel]="'Não Vinculada'" [style]="{ width: '10em' }"
+            [ngClass]="{ 'p-button-success': empresaEstaVinculada(empresa.Id) }"
+            [ngModel]="empresaEstaVinculada(empresa.Id)" (click)="vincularOuDesvincular(empresa)">
+          </p-toggleButton>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

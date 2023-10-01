@@ -1,0 +1,105 @@
+<div class="card">
+    <div class="form-container">
+        <p>Adicionar Fornecedor</p>
+        <form (ngSubmit)="atualizarFornecedor()" [formGroup]="fornecedorForm">
+            <div class="flex flex-wrap gap-3 tipo-pessoa">
+                <div class="flex align-items-center tipo-pessoa-select">
+                    <p-radioButton 
+                        name="tipoPessoa" 
+                        [value]="TipoPessoa.PessoaFisica" 
+                        [(ngModel)]="fornecedor.TipoPessoa" 
+                        [ngModelOptions]="{ standalone: true }" 
+                        (ngModelChange)="onTipoPessoaChange()"
+                        ></p-radioButton>
+                    <label for="pessoaFisica" class="ml-2">Pessoa Física</label>
+                </div>
+                
+                <div class="flex align-items-center tipo-pessoa-select">
+                    <p-radioButton 
+                        name="tipoPessoa" 
+                        [value]="TipoPessoa.PessoaJuridica" 
+                        [(ngModel)]="fornecedor.TipoPessoa" 
+                        [ngModelOptions]="{ standalone: true }" 
+                        inputId="pessoaJuridica"
+                        (ngModelChange)="onTipoPessoaChange()"
+                        ></p-radioButton>
+                    <label for="pessoaJuridica" class="ml-2">Pessoa Jurídica</label>
+                </div>
+                
+                <div class="error-message" *ngIf="exibirErroTipoPessoa">
+                    Selecione pelo menos uma opção: Pessoa Física ou Pessoa Jurídica.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cnpjcpf">Nome:</label>
+                <input type="text" placeholder="Nome" id="nome" formControlName="Nome" pInputText />
+                <div class="error-message"
+                    *ngIf="fornecedorForm.get('Nome')?.hasError('required') && fornecedorForm.get('Nome')?.touched">
+                    {{ errorMessages.Nome.required }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="nome">CNPJ/CPF:</label>
+                <input type="text" maxlength="18" placeholder="CNPJ/CPF" id="cnpjcpf" formControlName="CNPJCPF" pInputText appCpfCnpjFormat/>
+                <div class="error-message"
+                    *ngIf="fornecedorForm.get('CNPJCPF')?.hasError('required') && fornecedorForm.get('CNPJCPF')?.touched">
+                    {{ errorMessages.CNPJCPF.required }}
+                </div>
+                <div class="error-message"
+                    *ngIf="fornecedorForm.get('CNPJCPF')?.hasError('pattern') && fornecedorForm.get('CNPJCPF')?.touched">
+                    {{ errorMessages.CNPJCPF.pattern }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" placeholder="Email" id="email" formControlName="Email" pInputText />
+                <div class="error-message"
+                    *ngIf="fornecedorForm.get('Email')?.hasError('required') && fornecedorForm.get('Email')?.touched">
+                    {{ errorMessages.Email.required }}
+                </div>
+                <div class="error-message"
+                    *ngIf="fornecedorForm.get('Email')?.hasError('email') && fornecedorForm.get('Email')?.touched">
+                    {{ errorMessages.Email.email }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cep">CEP:</label>
+                <input 
+                    type="text" 
+                    maxlength="13" 
+                    placeholder="CEP" 
+                    id="cep" 
+                    formControlName="CEP" 
+                    pInputText 
+                    appCepFormat
+                    (ngModelChange)="validarCep()"/>
+                    <p-tag *ngIf="cepExiste?.cepValido" icon="pi pi-check" severity="success" value="CEP Existente"></p-tag>
+                <div class="error-message"
+                    *ngIf="fornecedorForm.get('CEP')?.hasError('required') && fornecedorForm.get('CEP')?.touched">
+                    {{ errorMessages.CEP.required }}
+                </div>
+                <div class="error-message"
+                    *ngIf="fornecedorForm.get('CEP')?.hasError('pattern') && fornecedorForm.get('CEP')?.touched">
+                    {{ errorMessages.CEP.pattern }}
+                </div>
+            </div>
+
+            <div class="form-group" *ngIf="tipoPessoaSelecionadaFisica()">
+                <label for="dataNascimento">Data de Nascimento:</label>
+                <p-calendar class="calendario" [showIcon]="true" id="dataNascimento" formControlName="DataNascimento" dateFormat="dd/mm/yy"></p-calendar>
+                <div class="error-message"
+                    *ngIf="fornecedorForm.get('DataNascimento')?.hasError('required') && fornecedorForm.get('DataNascimento')?.touched">
+                    {{ errorMessages.DataNascimento.required}}
+                </div>
+
+                <label for="rg">RG:</label>
+                <input type="text" placeholder="RG" id="rg" formControlName="RG" pInputText />
+                <div class="error-message"
+                    *ngIf="fornecedorForm.get('RG')?.hasError('required') && fornecedorForm.get('RG')?.touched">
+                    {{ errorMessages.RG.required }}
+                </div>
+            </div>
+            <button type="submit" pButton label="Atualizar"></button>
+        </form>
+    </div>
+</div>

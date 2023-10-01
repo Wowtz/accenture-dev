@@ -1,0 +1,23 @@
+.header-table {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    border-color: #6545f298;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+.title-table {
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+}

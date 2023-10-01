@@ -1,0 +1,67 @@
+
+<div class="card">
+    <p-table [value]="empresas" [tableStyle]="{'min-width': '60rem'}">
+        <ng-template pTemplate="caption">
+            <div class="header-table">
+                <p>
+                    Empresas
+                </p>
+                <p-button (onClick)="navegar('adicionar')">
+                    Adicionar empresa
+                </p-button>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+              <th>
+                <div class="title-table">
+                  Nome Fantasia
+                  <input pInputText type="text" [(ngModel)]="filtroNomeFantasia" placeholder="Filtrar" (input)="buscarEmpresas()">
+                </div>
+              </th>
+              <th>
+                <div class="title-table">
+                  CNPJ
+                  <input pInputText type="text" [(ngModel)]="filtroCNPJ" placeholder="Filtrar" (input)="buscarEmpresas()">
+                </div>
+              </th>
+              <th>
+                <div class="title-table">
+                  CEP
+                  <input pInputText type="text" [(ngModel)]="filtroCEP" placeholder="Filtrar" (input)="buscarEmpresas()">
+                </div>
+              </th>
+              <th>Ações</th>
+            </tr>
+          </ng-template>
+        <ng-template pTemplate="body" let-empresa>
+            <tr>
+                <td>{{empresa.NomeFantasia}}</td>
+                <td>{{empresa.CNPJ}}</td>
+                <td>{{empresa.CEP}}</td>
+                <td class="buttons">
+                  <p-button (click)="vincularFornecedor(empresa.Id)">
+                    Vincular Fornecedor
+                  </p-button>
+                    <p-button (click)="editarEmpresa(empresa.Id)">
+                      Editar
+                    </p-button>
+                    <p-button (onClick)="excluir(empresa.Id)">
+                      Excluir
+                    </p-button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <!-- invisible elements -->
+  <p-dialog 
+  header="Vincular Empresas" 
+  [(visible)]="visibleVincular" 
+  [modal]="true" 
+  [style]="{ width: '60vw', height: '80vh' }" 
+  [draggable]="false" 
+  [resizable]="false">
+  <app-vincular-fornecedor [visibleVincular]="visibleVincular"></app-vincular-fornecedor>
+</p-dialog>
+</div>

@@ -1,0 +1,36 @@
+p {
+    color: #708da9;
+    font-weight: 700;
+}
+
+.form-group, .tipo-pessoa {
+    display: flex;
+    flex-direction: column;
+    color: #708da9;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.tipo-pessoa-select {
+    display: flex;
+    gap: 10px;
+}
+
+label {
+    color: #708da9;
+}
+
+.card {
+    padding: 5px 50px;
+}
+
+input {
+    width: 300px;
+    border-color: #6545f298;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.error-message {
+    color: red;
+}

@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/soho-light/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+.p-menubar-start {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-right: 20px;
+}
