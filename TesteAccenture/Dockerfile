@@ -6,11 +6,11 @@ EXPOSE 80
 # Use a imagem oficial do SDK do ASP.NET Core para construir o aplicativo
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["/TesteAccenture.csproj", "src/TesteAccenture/"]
-RUN dotnet restore "src/TesteAccenture/TesteAccenture.csproj"
+COPY ["TesteAccenture/TesteAccenture.csproj", "TesteAccenture/"]
+RUN dotnet restore "TesteAccenture/TesteAccenture.csproj"
 COPY . .
-WORKDIR /src
-RUN dotnet build "src/TesteAccenture/TesteAccenture.csproj" -c Release -o /app/build
+WORKDIR "/src/TesteAccenture"
+RUN dotnet build "TesteAccenture.csproj" -c Release -o /app/build
 
 # Publicar o aplicativo
 FROM build AS publish
