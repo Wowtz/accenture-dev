@@ -36,7 +36,7 @@ jobs:
       run: |
         echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
 
-    - name: Push Docker image
+    - name: Push Docker images
       env:
         IMAGE_NAME: my-image-name
       run: |
