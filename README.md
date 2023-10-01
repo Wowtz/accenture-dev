@@ -1,6 +1,6 @@
-# Projeto Incrível
+# Projeto Desafio Fullstack Accenture
 
-![Logo do Projeto](https://logodownload.org/wp-content/uploads/2014/05/accenture-logo-0.png)
+![Logo do Projeto](https://logodownload.org/wp-content/uploads/2014/05/accenture-logo-4.png)
 
 Este é um projeto de teste para DEV na Accenture, feito 31/09 ~ 01/10, 
 
