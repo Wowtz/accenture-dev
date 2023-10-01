@@ -28,8 +28,8 @@ jobs:
         docker buildx create --use
         docker buildx inspect default --bootstrap
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker buildx build --file Dockerfile --tag my-image-name:$(date +%s) --output type=image,registry=${{ secrets.DOCKER_REGISTRY }} --platform linux/amd64 .
-
+        docker buildx build --file TesteAccenture/Dockerfile --tag $IMAGE_NAME:$(date +%s) --output type=image,registry=${{ secrets.DOCKER_REGISTRY }} --platform linux/amd64 .
     - name: Push Docker image
       run: |
-        docker push my-image-name:$(date +%s)
+        docker push wowtzcantfly/teste-accenture:latest
+
