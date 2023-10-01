@@ -42,4 +42,3 @@ jobs:
         IMAGE_NAME: my-image-name
       run: |
         docker push $IMAGE_NAME:$(date +%s)
-
