@@ -1,21 +1,22 @@
-#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
+# Use a imagem oficial do ASP.NET Core como imagem base
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
+# Use a imagem oficial do SDK do ASP.NET Core para construir o aplicativo
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["TesteAccenture.csproj", "."]
-RUN dotnet restore "./TesteAccenture.csproj"
+COPY ["TesteAccenture/TesteAccenture.csproj", "src/TesteAccenture/"]
+RUN dotnet restore "src/TesteAccenture/TesteAccenture.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/TesteAccenture"
 RUN dotnet build "TesteAccenture.csproj" -c Release -o /app/build
 
+# Publicar o aplicativo
 FROM build AS publish
-RUN dotnet publish "TesteAccenture.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "TesteAccenture.csproj" -c Release -o /app/publish
 
+# Configurar a imagem final
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
