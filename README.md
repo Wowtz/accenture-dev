@@ -1,6 +1,6 @@
 # Projeto Incrível
 
-![Logo do Projeto](https://www.accenture.com/images/logo.svg)
+![Logo do Projeto](https://logodownload.org/wp-content/uploads/2014/05/accenture-logo-0.png)
 
 Este é um projeto de teste para DEV na Accenture, feito 31/09 ~ 01/10, 
 
@@ -39,9 +39,9 @@ Este é um projeto de teste para DEV na Accenture, feito 31/09 ~ 01/10,
     k. Implementar Dockerfile (opcional)
 
 ## Recursos Principais
-
-- Usado EntityFrameWork para Banco de dados.
-- Usado PrimeNG para estilização do Front.
+- Usada a API https://viacep.com.br/ws/, api recomendada pelo dessafio não se encontrava disponível
+- Usado EntityFrameWork para Banco de dados
+- Usado PrimeNG para estilização do Front
 
 ## Como Usar
 
