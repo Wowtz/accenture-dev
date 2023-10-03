@@ -29,7 +29,7 @@ jobs:
         docker buildx inspect default --bootstrap
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker buildx build --file TesteAccenture/Dockerfile --tag wowtzcantfly/testeaccenture:v1 --output type=image,registry=${{ secrets.DOCKER_REGISTRY }} --platform linux/amd64 .
-        docker tag testeaccenture:v1 wowtzcantfly/testeaccenture:v1
     - name: Push Docker image
       run: |
+        docker tag testeaccenture:v1 wowtzcantfly/testeaccenture:v1
         docker push wowtzcantfly/testeaccenture:v1
