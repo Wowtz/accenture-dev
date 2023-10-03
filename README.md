@@ -7,6 +7,7 @@ Este é um projeto de teste para DEV na Accenture, feito 31/09 ~ 01/10,
 
 ## Testes
   [![.NET](https://github.com/Wowtz/accenture-dev/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Wowtz/accenture-dev/actions/workflows/dotnet.yml)
+  [![Docker Image CI](https://github.com/Wowtz/accenture-dev/actions/workflows/docker-image.yml/badge.svg)](https://github.com/Wowtz/accenture-dev/actions/workflows/docker-image.yml)
 
 ## Tecnologias
   Usados .Net 7, Angular 11 e SQL Server.
