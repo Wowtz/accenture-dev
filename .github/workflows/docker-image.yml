@@ -34,5 +34,5 @@ jobs:
     - name: Push Docker image
       run: |
         docker pull wowtzcantfly/testeaccenture:dev
-        docker tag testeaccenture:dev wowtzcantfly/testeaccenture:dev
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker push wowtzcantfly/testeaccenture:dev
