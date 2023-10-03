@@ -4,6 +4,10 @@
 
 Este é um projeto de teste para DEV na Accenture, feito 31/09 ~ 01/10, 
 
+
+## Testes
+  [![.NET](https://github.com/Wowtz/accenture-dev/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Wowtz/accenture-dev/actions/workflows/dotnet.yml)
+
 ## Tecnologias
   Usados .Net 7, Angular 11 e SQL Server.
 
