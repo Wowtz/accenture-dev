@@ -31,5 +31,5 @@ jobs:
         docker buildx build --file TesteAccenture/Dockerfile --tag wowtzcantfly/testeaccenture:v1 --output type=image,registry=${{ secrets.DOCKER_REGISTRY }} --platform linux/amd64 .
     - name: Push Docker image
       run: |
-        docker tag testeaccenture:tagname wowtzcantfly/testeaccenture:tagname
-        docker push wowtzcantfly/testeaccenture:tagname
+        docker tag testeaccenture:dev wowtzcantfly/testeaccenture:dev
+        docker push wowtzcantfly/testeaccenture:dev
